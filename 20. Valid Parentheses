@@ -1,0 +1,19 @@
+class Solution:
+    def isValid(self, expr: str) -> bool:
+        s = []
+        expr = expr.replace(" ", "")
+        
+        for i in expr:
+            if i == "(":
+                s.append(")")
+            elif i == "{":
+                s.append("}")
+            elif i == "[":
+                s.append("]")
+            elif not s or s[-1] != i:
+                return False
+            else:
+                # This means s[-1] == i
+                s.pop()
+        
+        return not s
