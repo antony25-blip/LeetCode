@@ -1,0 +1,22 @@
+class Solution:
+    def subarrayLCM(self, nums: List[int], k: int) -> int:
+        
+        def findHCF(m,n):
+            while n>0:
+                rem = m%n
+                m=n
+                n=rem
+            return m
+        def lcm(a,b):
+            r=findHCF(a,b)
+            return a*b//r
+        cnt=0
+        curlcm=0
+        for i in range(len(nums)):
+            curlcm=nums[i]
+            for j in range(i,len(nums)):
+                curlcm=lcm(curlcm,nums[j])
+                if curlcm==k:
+                    cnt+=1
+        return cnt
+        
