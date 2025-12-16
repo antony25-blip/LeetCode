@@ -1,0 +1,20 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        group={}
+        for i in strs:
+            key="".join(sorted(i))
+            if key not in group:
+                group[key]=[]
+            group[key].append(i)
+        l=0
+        cnt=0
+        for i in group:
+            l=len(group[i])
+            if l >1:
+                cnt+=l
+        print("jds",cnt)
+        return list(group.values())
+        
+
+
+
